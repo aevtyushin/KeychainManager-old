@@ -8,7 +8,7 @@ s.requires_arc = true
 
 s.version = '0.1.0'
 s.license = { :type => 'MIT', :file => 'LICENSE' }
-# s.authors = { 'Andrey Evtyushin' => 'a.evtyushin@gmail.com' }
+s.authors = { 'Andrey Evtyushin' => 'a.evtyushin@gmail.com' }
 s.homepage = 'https://github.com/aevtyushin/KeychainManager'
 s.source = { :git => 'https://github.com/aevtyushin/KeychainManager.git', 
              :tag => '#{s.version}' }

@@ -22,7 +22,7 @@ public class KeychainManager: NSObject {
         return __._shared
     }
     
-    @objc public var itemClass: ItemClass = .genericPassword
+    @objc public var itemClass: ItemClass = .internetPassword
 
     private var secClass: CFString {
         
