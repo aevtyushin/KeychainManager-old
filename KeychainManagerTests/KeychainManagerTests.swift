@@ -30,6 +30,22 @@ class KeychainManagerTests: XCTestCase {
         
     }
     
+    func testServers() {
+        
+        KeychainManager.deleteAll(debug: true)
+        
+        let keychainManager1 = KeychainManager(server: "example1.com", account: "account1")
+        keychainManager1.allowDebugValues = true
+        keychainManager1.setStringValue(value: "password1", for: "password")
+        
+        let keychainManager2 = KeychainManager(server: "example2.com", account: "account2")
+        keychainManager2.allowDebugValues = true
+        keychainManager2.setStringValue(value: "password2", for: "password")
+        
+        print(KeychainManager.servers(debug: true))
+        
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

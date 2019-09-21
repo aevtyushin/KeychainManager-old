@@ -109,6 +109,49 @@ public class KeychainManager: NSObject {
     
 }
 
+//MARK: - Servers
+
+extension KeychainManager {
+    
+    @objc class func servers(debug: Bool = false) -> [String] {
+        
+        let query: Dictionary<String, AnyObject> = [
+            String(kSecClass): kSecClassInternetPassword,
+            String(kSecReturnAttributes): kCFBooleanTrue,
+            String(kSecMatchLimit): kSecMatchLimitAll,
+        ]
+        
+        var result: CFTypeRef?
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+        
+        var servers = [String]()
+        if status == errSecSuccess {
+            if let items = result as? [[String: Any]] {
+                for var item in items {
+                    if let server = item[String(kSecAttrServer)] as? String, !servers.contains(server) {
+                        servers.append(server)
+                    }
+                }
+            }
+        }
+        
+        if debug {
+            if status == errSecSuccess {
+                debugPrint("[servers] get servers - '"+servers.joined(separator: ", ")+"'")
+            }
+            else {
+                let error = KeychainError(code: status)
+                let errorDescription = "("+String(error.code)+") "+error.description
+                debugPrint("[servers] can't get servers, error = "+errorDescription)
+            }
+        }
+        
+        return servers
+        
+    }
+    
+}
+
 //MARK: - Accounts
 extension KeychainManager {
     
