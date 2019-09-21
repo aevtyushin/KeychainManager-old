@@ -1,8 +1,8 @@
 //  KeychainManager.swift
-//  JIraClient
+//  KeychainManager
 //
-//  Created by Андрей Евтюшин on 29/05/2019.
-//  Copyright © 2019 Mail.ru Group. All rights reserved.
+//  Created by Andrey Evtyushin on 29/05/2019.
+//  Copyright © 2019 Andrey Evtyushin. All rights reserved.
 //
 
 import Foundation
@@ -41,14 +41,33 @@ public class KeychainManager: NSObject {
         return kSecAttrAccessibleAlwaysThisDeviceOnly
     }
 
+//    @objc public var server: String {
+//
+//        guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+//            return "unknown"
+//        }
+//
+//        return bundleIdentifier
+//
+//    }
+    
+    private var _server: String?
     @objc public var server: String {
-
-        guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
-            return "unknown"
+        
+        get {
+            if _server == nil {
+                if let bundleIdentifier = Bundle.main.bundleIdentifier {
+                    _server = bundleIdentifier
+                }
+            }
+            return _server ?? "default"
         }
-
-        return bundleIdentifier
-
+        set {
+            if _server != newValue {
+                _server = newValue
+            }
+        }
+        
     }
     
     private var _account: String?
@@ -73,63 +92,18 @@ public class KeychainManager: NSObject {
     @objc public var allowDebugAccounts = false
     @objc public var allowDebugValues = false
     @objc public var allowDebugCerificates = false
-
-//
-//    var password: String? {
-//        get {
-//            return try! keychain.getString(Keys.password.rawValue)
-//        }
-//        set{
-//            keychain[Keys.password.rawValue] = newValue
-//        }
-//    }
-//
-//    var lastLoginDate: Date {
-//        get {
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "y-MM-dd H:m:ss.SSSS"
-//            let dateAsString = try! keychain.getString("lastLoginDate") ?? formatter.string(from: Date.init(timeIntervalSince1970: 0))
-//            return formatter.date(from: dateAsString)!
-//        }
-//        set{
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "y-MM-dd H:m:ss.SSSS"
-//            keychain["lastLoginDate"] = formatter.string(from: newValue)
-//        }
-//    }
-//
-//    var isAuthorized: Bool {
-//        return userName?.isEmpty == false && password?.isEmpty == false
-//    }
-//
-//    init(){
-//        //...
-//    }
-//
-//    deinit {
-//        //...
-//    }
-//
-//    func clearCredentials() {
-//
-//        userName = nil
-//        password = nil
-//        lastLoginDate = Date.init(timeIntervalSince1970: 0)
-//
-//    }
-//
-//    func credentialsForBasicAuthorization() -> String? {
-//
-//        guard isAuthorized else {
-//            return nil
-//        }
-//
-//        return (userName!+":"+password!).data(using: .utf8)?.base64EncodedString() ?? ""
-//
-//    }
     
-    
-    public override init() {
+    @objc required public init(server: String? = nil, account: String? = nil) {
+        
+        super.init()
+        
+        if let server = server {
+            self.server = server
+        }
+        
+        if let account = account {
+            self.account = account
+        }
         
     }
     

@@ -12,6 +12,7 @@
 		D3EBE24C232FF186006C2095 /* KeychainManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EBE242232FF186006C2095 /* KeychainManager.framework */; };
 		D3EBE251232FF186006C2095 /* KeychainManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EBE250232FF186006C2095 /* KeychainManagerTests.swift */; };
 		D3EBE253232FF186006C2095 /* KeychainManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D3EBE245232FF186006C2095 /* KeychainManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3EBE28B2330F008006C2095 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EBE28A2330F008006C2095 /* KeychainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		D3EBE24B232FF186006C2095 /* KeychainManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeychainManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3EBE250232FF186006C2095 /* KeychainManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManagerTests.swift; sourceTree = "<group>"; };
 		D3EBE252232FF186006C2095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3EBE28A2330F008006C2095 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +79,6 @@
 				BCD29C178DC312F0B131CF6F /* Pods-KeychainManagerTests.debug.xcconfig */,
 				880A0018CCCF31C22973423C /* Pods-KeychainManagerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -105,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				D3EBE245232FF186006C2095 /* KeychainManager.h */,
+				D3EBE28A2330F008006C2095 /* KeychainManager.swift */,
 				D3EBE246232FF186006C2095 /* Info.plist */,
 			);
 			path = KeychainManager;
@@ -183,6 +185,7 @@
 				TargetAttributes = {
 					D3EBE241232FF186006C2095 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 					D3EBE24A232FF186006C2095 = {
 						CreatedOnToolsVersion = 10.3;
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3EBE28B2330F008006C2095 /* KeychainManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BACCC96986F4C67AEB871E94 /* Pods-KeychainManager.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -442,6 +447,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.keychainmanager.KeychainManager;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -450,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4B23FE42288317775984B0B /* Pods-KeychainManager.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -477,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BCD29C178DC312F0B131CF6F /* Pods-KeychainManagerTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2655J94PWC;
@@ -496,6 +504,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 880A0018CCCF31C22973423C /* Pods-KeychainManagerTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2655J94PWC;
